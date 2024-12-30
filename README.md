@@ -10,6 +10,4 @@ It's the classic game you know and love: choose between rock, paper, or scissors
 ## 🚀 How to Run  
 
 1. **Clone the Repository**:  
-   ```bash  
-   git clone https://github.com/your-username/rock-paper-scissors.git  
 2. **Run it using Live Server or something similar**
