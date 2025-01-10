@@ -10,15 +10,21 @@ let computerScore = 0;
 const playerScoreText = document.getElementById("player-score");
 const computerScoreText = document.getElementById("computer-score");
 
-function play(event) {
-  let playerWon;
-  let tie = false;
-
+function getChoices(event) {
   const playerChoice = event.target.id;
   const computerChoice = computerOptions[Math.floor(Math.random() * 3)];
 
+  return [playerChoice, computerChoice];
+}
+
+function displayChoices(playerChoice, computerChoice) {
   playerChoiceText.textContent = `Player chose ${playerChoice}`;
   computerChoiceText.textContent = `Computer chose ${computerChoice}`;
+}
+
+function checkWinner(playerChoice, computerChoice) {
+  let playerWon = false;
+  let tie = false;
 
   switch (playerChoice) {
     case computerChoice:
@@ -47,8 +53,6 @@ function play(event) {
     resultText.style.color = "red";
     computerScore++;
   }
-
-  updateScore();
 }
 
 function updateScore() {
@@ -63,5 +67,10 @@ function resetScore() {
 }
 
 playerOptions.forEach((option) => {
-  option.addEventListener("click", play);
+  option.addEventListener("click", (event) => {
+    const [playerChoice, computerChoice] = getChoices(event);
+    displayChoices(playerChoice, computerChoice);
+    checkWinner(playerChoice, computerChoice);
+    updateScore();
+  });
 });
