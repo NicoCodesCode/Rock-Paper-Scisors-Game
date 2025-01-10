@@ -39,7 +39,7 @@ header {
 }
 
 .options-container {
-  width: 475px;
+  width: clamp(200px, 80vw, 500px);
   height: 130px;
   margin: 0 auto 4rem auto;
   display: flex;
@@ -101,4 +101,12 @@ button {
 
 button:active {
   background-color: var(--color1);
+}
+
+@media only screen and (max-width: 480px) {
+  .score-section {
+    text-align: center;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
